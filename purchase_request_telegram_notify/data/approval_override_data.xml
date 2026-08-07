@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="override_febriyan" model="purchase.request.approval.override">
+        <field name="name">Febriyan - Purchasing</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="override_telesales" model="purchase.request.approval.override">
+        <field name="name">Telesales Group - Satriyo/Nashirudin</field>
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

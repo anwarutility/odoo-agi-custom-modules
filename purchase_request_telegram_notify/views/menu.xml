@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_approval_override"
+              name="Approval Override"
+              parent="purchase_request.menu_purchase_request"
+              action="action_pr_approval_override"
+              sequence="50"
+              groups="base.group_system"/>
+</odoo>

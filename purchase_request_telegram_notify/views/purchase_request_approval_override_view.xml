@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pr_approval_override_tree" model="ir.ui.view">
+        <field name="name">purchase.request.approval.override.tree</field>
+        <field name="model">purchase.request.approval.override</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pr_approval_override_form" model="ir.ui.view">
+        <field name="name">purchase.request.approval.override.form</field>
+        <field name="model">purchase.request.approval.override</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Inactive" bg_color="text-muted"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Requesters (Staff)">
+                        <field name="employee_ids" widget="many2many_tags"/>
+                    </group>
+                    <group string="Approvers (Notified Users)">
+                        <field name="approver_user_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_pr_approval_override" model="ir.actions.act_window">
+        <field name="name">Approval Override Rules</field>
+        <field name="res_model">purchase.request.approval.override</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

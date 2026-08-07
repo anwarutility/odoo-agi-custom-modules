@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_request_form_auto_rfq" model="ir.ui.view">
+        <field name="name">purchase.request.form.auto.rfq</field>
+        <field name="model">purchase.request</field>
+        <field name="inherit_id" ref="purchase_request.view_purchase_request_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='button_approved']" position="after">
+                <button
+                    name="action_generate_rfq"
+                    type="object"
+                    states="approved"
+                    string="Generate RFQ"
+                    class="oe_highlight"
+                />
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    type="object"
+                    name="action_view_rfq"
+                    class="oe_stat_button"
+                    attrs="{'invisible':[('rfq_count', '=', 0)]}"
+                    icon="fa-file-text-o"
+                    string="RFQ"
+                >
+                    <field
+                        name="rfq_count"
+                        widget="statinfo"
+                        string="RFQs (Draft)"
+                    />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

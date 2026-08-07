@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_request_bom_bootstrap_form" model="ir.ui.view">
+        <field name="name">purchase.request.bom.bootstrap.form</field>
+        <field name="model">purchase.request.bom.bootstrap</field>
+        <field name="arch" type="xml">
+            <form string="Bootstrap BOM Generator">
+                <group>
+                    <p>Scan MX- products without an active BOM and generate
+                    draft BOMs from the product code pattern (COMP-*/BOX_*).
+                    Review the preview carefully before generating.</p>
+                </group>
+                <field name="line_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                        <field name="product_code"/>
+                        <field name="product_name"/>
+                        <field name="component_codes"/>
+                        <field name="status"/>
+                        <field name="bom_id"/>
+                        <field name="product_tmpl_id" column_invisible="1"/>
+                        <field name="component_ids" column_invisible="1"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button name="action_preview" type="object"
+                            string="Scan &amp; Preview"
+                            class="oe_highlight"/>
+                    <button name="action_generate" type="object"
+                            string="Generate Draft BOMs"/>
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="purchase_request_bom_bootstrap_action" model="ir.actions.act_window">
+        <field name="name">Bootstrap BOM Generator</field>
+        <field name="res_model">purchase.request.bom.bootstrap</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p>Generate draft Bills of Materials for MX- products that do not
+            have one yet, based on the COMP-*/BOX_* product code pattern.</p>
+        </field>
+    </record>
+</odoo>
